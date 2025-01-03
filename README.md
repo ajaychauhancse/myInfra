@@ -1,45 +1,21 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaaq2gvnwi3cw3nttgpxqvgysfnrvxxjrl6vnjecrevkpgt4t2cqybq
+fingerprint=a2:36:12:25:c8:60:11:c7:0d:20:e3:27:d4:34:82:b6
+tenancy=ocid1.tenancy.oc1..aaaaaaaattfv3wexglwupuljgdms2ynsslw456nkyaseebxygpoo75hzpo4q
+region=us-phoenix-1
+key_file=<path to your private keyfile> # TODO
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+export TF_VAR_private_key=`cat ~/myPOC/tfadmin_private.pem`
+terraform plan -var-file="env/dev.tfvars"
+terraform apply -var-file="env/dev.tfvars"
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+eval "$(ssh-agent -s)"
+ssh-add /Users/ajayc/myPOC/myinfra/compute-key/id_rsa_key_com
+ssh-add /Users/ajayc/myPOC/ssh_tunnel/id_rsa
 
----
+myCompute(Pub) add priv-key ==>myComputePriv(Priv)
+			   ==>myComputePriv1(Priv)
+			   
 
-## Edit a file
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-
----
-
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+curl ifconfig.me
